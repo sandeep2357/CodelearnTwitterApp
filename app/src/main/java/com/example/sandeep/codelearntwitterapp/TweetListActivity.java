@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.example.sandeep.codelearntwitterapp.models.Tweet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TweetListActivity extends ListActivity {
 
@@ -27,7 +31,17 @@ public class TweetListActivity extends ListActivity {
             stringArray[i] = "String " + i;
         }*/
         //tweetItemArrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,stringArray);
-        tweetItemArrayAdapter = new TweetAdapter(this,new String[10]);
+
+        List<Tweet> tweets= new ArrayList<Tweet>();
+
+        for(int i = 0; i < 20; i++){
+            Tweet tweet = new Tweet();
+            tweet.setTitle("Header for Tweet "+i);
+            tweet.setBody("Some random text for the body of tweet "+i);
+            tweets.add(tweet);
+        }
+
+        tweetItemArrayAdapter = new TweetAdapter(this,tweets);
 
         //tweetListView = (ListView) findViewById(R.id.tweetList);
         //tweetListView.setAdapter(tweetItemArrayAdapter);
